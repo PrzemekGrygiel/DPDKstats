@@ -3,6 +3,7 @@ vRouter DPDK statistics collect the sript
 
 ./dpdkstats.py  
   Options:
+  
   -v VIF, --vif VIF     vif number - only number after vif0/
   
   -t TIME, --time TIME  time for test default 3 seconds
