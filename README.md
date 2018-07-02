@@ -10,11 +10,9 @@ vRouter DPDK statistics collect the sript
   -c CPU, --cpu CPU     number of CPUs assigned to vRouter - default 6
   
   
-  #Example of use 
+  # Example of use 
   Show total CPU utilisation
   
-  
- `
 ./dpdkstats.py --time 5 --cpu 6 --all_vifs
 ----------------------------------
 |         pps per Core           |
@@ -28,7 +26,7 @@ vRouter DPDK statistics collect the sript
 ----------------------------------
 | Total  | pps: 2759930          |
 ----------------------------------
-`
+
 
 
 ./dpdkstats.py --time 5 --cpu 6 --vif 0
