@@ -4,15 +4,18 @@ vRouter DPDK statistics collect the sript
 ./dpdkstats.py  
   Options:
   -v VIF, --vif VIF     vif number - only number after vif0/
+  
   -t TIME, --time TIME  time for test default 3 seconds
+  
   -c CPU, --cpu CPU     number of CPUs assigned to vRouter - default 6
+  
   
   #Example of use 
   Show total CPU utilisation
   
   
- '' 
- ./dpdkstats.py --time 5 --cpu 6 --all_vifs
+ `
+./dpdkstats.py --time 5 --cpu 6 --all_vifs
 ----------------------------------
 |         pps per Core           |
 ----------------------------------
@@ -25,7 +28,7 @@ vRouter DPDK statistics collect the sript
 ----------------------------------
 | Total  | pps: 2759930          |
 ----------------------------------
-
+`
 
 
 ./dpdkstats.py --time 5 --cpu 6 --vif 0
@@ -44,5 +47,5 @@ vRouter DPDK statistics collect the sript
 -------------------------------------------------------------------------------------------------------------------------------------
 |Total   | TX pps: 1376126   | RX pps: 1378128   | TX bps: 2052902488| RX bps: 2055353647| TX error: 0         | RX error 0         |
 -------------------------------------------------------------------------------------------------------------------------------------
-  ''
+"
  
