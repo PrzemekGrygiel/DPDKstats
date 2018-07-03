@@ -70,7 +70,7 @@ if parsed_params.all_vifs == True :
     for j in out:
         tx,rx = get_cpu_load_all(j,core_n,timer)
         for i in range(core_n):
-           print "| VIF {:<3} |Core {:<3}| TX pps: {:<10}| RX pps: {:<10}| TX bps: {:<10}| RX bps: {:<10}| TX error: {:<10}| RX error {:<10}| " .format(j,i+1,tx[i*3],rx[i*3],tx[i*3+1],rx[i*3+1],tx[i*3+2],rx[i*3+2])
+           print "| VIF {:<3} |Core {:<3}| TX pps: {:<10}| RX pps: {:<10}| TX bps: {:<10}| RX bps: {:<10}| TX error: {:<10}| RX error {:<10}| " .format(j,i+1,tx[i*3],rx[i*3],tx[i*3+1]*8,rx[i*3+1]*8,tx[i*3+2],rx[i*3+2])
            core[i] = core[i] + tx[i*3] + rx[i*3] 
     print "----------------------------------"
     print "|         pps per Core           |"
@@ -94,7 +94,6 @@ else:
         total[5]+=rx[i*3+2]
         print "|Core {:<3}| TX pps: {:<10}| RX pps: {:<10}| TX bps: {:<10}| RX bps: {:<10}| TX error: {:<10}| RX error {:<10}|" .format(i+1, tx[i*3], rx[i*3], tx[i*3+1], rx[i*3+1], tx[i*3+2], rx[i*3+2])
         print "-------------------------------------------------------------------------------------------------------------------------------------"
-    print "|Total   | TX pps: {:<10}| RX pps: {:<10}| TX bps: {:<10}| RX bps: {:<10}| TX error: {:<10}| RX error {:<10}|" .format(total[0], total[1], total[2], total[3], total[4], total[5])
+    print "|Total   | TX pps: {:<10}| RX pps: {:<10}| TX bps: {:<10}| RX bps: {:<10}| TX error: {:<10}| RX error {:<10}|" .format(total[0], total[1], total[2]*8, total[3]*8, total[4], total[5])
     print "-------------------------------------------------------------------------------------------------------------------------------------"
-
 
