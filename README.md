@@ -10,6 +10,7 @@ vRouter DPDK statistics collect the sript
   
   -c CPU, --cpu CPU     number of CPUs assigned to vRouter - default will be autodetected
   
+  -all, --all_vifs      total CPU utilisation from all VIFs
   
   # Example of use 
   Show total CPU utilisation
