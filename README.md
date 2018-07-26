@@ -16,19 +16,19 @@ vRouter DPDK statistics collect the sript
   Show total CPU utilisation
 
 ```
-./dpdkstats.py --time 5 --cpu 6 --all_vifs
-----------------------------------
-|         pps per Core           |
-----------------------------------
-|Core 0  |TX + RX pps: 520033    |
-|Core 1  |TX + RX pps: 372574    |
-|Core 2  |TX + RX pps: 478116    |
-|Core 3  |TX + RX pps: 420974    |
-|Core 4  |TX + RX pps: 487320    |
-|Core 5  |TX + RX pps: 480913    |
-----------------------------------
-| Total  | pps: 2759930          |
-----------------------------------
+./dpdkstats.py --all_vifs
+------------------------------------------------------------------------
+|                                pps per Core                          |
+------------------------------------------------------------------------
+|Core 1  |TX + RX pps: 1959      | TX pps 1296      | RX pps 663       |
+|Core 2  |TX + RX pps: 83        | TX pps 53        | RX pps 30        |
+|Core 3  |TX + RX pps: 36        | TX pps 18        | RX pps 18        |
+|Core 4  |TX + RX pps: 35        | TX pps 13        | RX pps 22        |
+|Core 5  |TX + RX pps: 219       | TX pps 142       | RX pps 77        |
+|Core 6  |TX + RX pps: 109       | TX pps 68        | RX pps 41        |
+------------------------------------------------------------------------
+|Total   |TX + RX pps: 2441      | TX pps 1590      | RX pps 851       |
+------------------------------------------------------------------------
 
 
 
