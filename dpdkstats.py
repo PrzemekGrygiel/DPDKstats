@@ -7,6 +7,26 @@ import sys
 import os
 import warnings
 import time
+import re
+
+def get_dpdk_vrouter_pid():
+    cmd = "ps -aux | grep \"[c]ontrail-vrouter-dpdk --no-daemon\"| awk \'{print $2}\'"
+    dpdk_vrouter_pid = subprocess.check_output(['bash','-c', cmd])
+    dpdk_vrouter_pid = re.sub("[^0-9]+","", dpdk_vrouter_pid, flags=re.IGNORECASE)
+    if dpdk_vrouter_pid == "":
+        print "/!\ DPDK vRouter is not present!"
+        sys.exit(1)
+    return dpdk_vrouter_pid
+
+def get_core_n():
+    vrouter_core_n = 0
+    dpdk_vrouter_pid = get_dpdk_vrouter_pid()
+    cmd = "for tid in $(ps --no-headers -p {} -ww -L -olwp |sed \'s/$/ /\'); do taskset -cp $tid; done | grep -v '^.*[0-9]*-[0-9]*' | wc -l" .format(get_dpdk_vrouter_pid())
+    vrouter_core_n = int(subprocess.check_output(['bash','-c', cmd]))
+    if vrouter_core_n == 0:
+        print "/!\ DPDK vRouter is not present!"
+        sys.exit(1)
+    return vrouter_core_n
 
 def get_cpu_load_all(vif, core_n, timer):
     list1_tx=[]
@@ -54,10 +74,8 @@ vif = parsed_params.vif
 timer = parsed_params.time 
 core_n = parsed_params.cpu    
 if int(core_n) == 0:
-     cmd = 'cat /etc/contrail/supervisord_vrouter_files/contrail-vrouter-dpdk.ini | grep -v \"^#\"| awk -F \"x| \" \'/taskset/{print $3}\''
-     core_n = bin(int(subprocess.check_output(['bash','-c', cmd]),16)).count("1")
-     
-
+    core_n = get_core_n()
+    
 if parsed_params.all_vifs == True :
     cmd = 'vif -l|awk \'/tap/{print $1}\' | cut -d\'/\' -f2'
     output = subprocess.check_output(['bash','-c', cmd])
