@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 
-import psutil
 import operator
 import argparse
 import subprocess
@@ -9,29 +8,6 @@ import os
 import warnings
 import time
 import re
-
-
-def get_dpdk_vrouter_pid():
-    process_name = "contrail-vrouter-dpdk"
-    pid = None
-    for proc in psutil.process_iter():
-        if process_name in proc.name():
-            return proc.pid
-    print("/!\ DPDK vRouter is not present!")
-    sys.exit(1)
-
-
-def get_core_n():
-    vrouter_core_n = 0
-    p = psutil.Process(get_dpdk_vrouter_pid())
-    for th in p.threads():
-        x = psutil.Process(th.id)
-        if len(x.cpu_affinity()) != psutil.cpu_count():
-            vrouter_core_n = vrouter_core_n + 1
-    if vrouter_core_n == 0:
-        print("/!\ DPDK vRouter is not present!")
-        sys.exit(1)
-    return vrouter_core_n
 
 
 def parse_vif(vif, core):
@@ -155,7 +131,7 @@ parser.add_argument(
     "-t", "--time", help="time for test default 3 seconds", type=int, default=3
 )
 parser.add_argument(
-    "-c", "--cpu", help="number of CPUs - default 6", type=int, default=get_core_n()
+    "-c", "--cpu", help="number of CPUs - default 6", type=int, default=6
 )
 parser.add_argument(
     "--all",
