@@ -44,10 +44,6 @@ def parse_vif(vif, core):
     return tx, rx
 
 
-def flatten(input_list):
-    return [i for sub in input_list for i in sub]
-
-
 def get_cpu_load_all(vif, core_n, timer):
     list1_tx = []
     list1_rx = []
