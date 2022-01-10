@@ -1,22 +1,22 @@
 # DPDKstats
-vRouter DPDK statistics collect the sript
+Script to examine packet distribution among cpu cores on DPDK vRouter
 
-./dpdkstats.py  
-  Options:
-  
-  -v VIF, --vif VIF     vif number - only number after vif0/
-  
+```
+./dpdkstats.py -h
+usage: dpdkstats.py [-h] [-v VIF] [-t TIME] [-c CPU] [--all]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v VIF, --vif VIF     vif number - only number after /
   -t TIME, --time TIME  time for test default 3 seconds
-  
-  -c CPU, --cpu CPU     number of CPUs assigned to vRouter - default will be autodetected
-  
-  -all, --all_vifs      total CPU utilisation from all VIFs
-  
-  # Example of use 
+  -c CPU, --cpu CPU     number of CPUs - default 6
+  --all                 total CPU utilisation from all VIFs
+```
+# Usage example
   Show total CPU utilisation
 
 ```
-./dpdkstats.py --all_vifs
+./dpdkstats.py --all
 ------------------------------------------------------------------------
 |                                pps per Core                          |
 ------------------------------------------------------------------------
@@ -49,5 +49,3 @@ vRouter DPDK statistics collect the sript
 |Total   | TX pps: 1376126   | RX pps: 1378128   | TX bps: 2052902488| RX bps: 2055353647| TX error: 0         | RX error 0         |
 -------------------------------------------------------------------------------------------------------------------------------------
 ```
-
- 
